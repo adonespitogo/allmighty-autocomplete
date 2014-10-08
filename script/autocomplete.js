@@ -12,7 +12,6 @@ app.directive('autocomplete', function() {
       suggestions: '=data',
       onType: '=onType',
       onSelect: '=onSelect'
-      template: '=template'
     },
     controller: ['$scope', function($scope){
       // the index of the suggestions that's currently selected
