@@ -12,6 +12,7 @@ app.directive('autocomplete', function() {
       suggestions: '=data',
       onType: '=onType',
       onSelect: '=onSelect'
+      template: '=template'
     },
     controller: ['$scope', function($scope){
       // the index of the suggestions that's currently selected
@@ -242,29 +243,16 @@ app.directive('autocomplete', function() {
               index="{{ $index }}"\
               val="{{ suggestion }}"\
               ng-class="{ active: ($index === selectedIndex) }"\
-              ng-click="select(suggestion)"\
-              ng-bind-html="suggestion | highlight:searchParam"></li>\
+              ng-click="select(suggestion)">\
+                <a class="btn btn-user">\
+                  <span class="profile">AP</span>\
+                  {{suggestion.name}}
+                </a>
+              </li>\
           </ul>\
         </div>'
   };
 });
-
-app.filter('highlight', ['$sce', function ($sce) {
-  return function (input, searchParam) {
-    if (typeof input === 'function') return '';
-    if (searchParam) {
-      var words = '(' +
-            searchParam.split(/\ /).join(' |') + '|' +
-            searchParam.split(/\ /).join('|') +
-          ')',
-          exp = new RegExp(words, 'gi');
-      if (words.length) {
-        input = input.replace(exp, "<span class=\"highlight\">$1</span>");
-      }
-    }
-    return $sce.trustAsHtml(input);
-  };
-}]);
 
 app.directive('suggestion', function(){
   return {
