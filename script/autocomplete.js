@@ -245,8 +245,8 @@ app.directive('autocomplete', function() {
               ng-click="select(suggestion)">\
                 <a class="btn btn-user">\
                   <span class="profile">AP</span>\
-                  {{suggestion.name}}
-                </a>
+                  {{suggestion.name}}\
+                </a>\
               </li>\
           </ul>\
         </div>'
