@@ -242,7 +242,7 @@ app.directive('autocomplete', function() {
               index="{{ $index }}"\
               val="{{ suggestion }}"\
               ng-class="{ active: ($index === selectedIndex) }"\
-              ng-click="select(suggestion.name)">\
+              ng-click="select(suggestion)">\
                 <a class="btn btn-user">\
                   <span class="profile">AP</span>\
                   {{suggestion.name}}\
